@@ -1,0 +1,8 @@
+build/
+.vscode/
+managed_components/
+dependencies.lock
+sdkconfig
+.cursorignore
+.cache/
+sdkconfig.old
