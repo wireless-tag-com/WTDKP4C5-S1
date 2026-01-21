@@ -25,9 +25,11 @@ void ui_ScreenSettingVerification_screen_init(void)
     lv_obj_set_width(ui_LabelScreenSettingVerificationSSID, 500);
     lv_obj_set_height(ui_LabelScreenSettingVerificationSSID, 40);
     lv_obj_set_x(ui_LabelScreenSettingVerificationSSID, 96);
-    lv_obj_set_y(ui_LabelScreenSettingVerificationSSID, 63);
-    lv_obj_set_style_text_font(ui_LabelScreenSettingVerificationSSID, &lv_font_montserrat_30,
-                               LV_PART_MAIN | LV_STATE_DEFAULT);
+    // lv_obj_set_y(ui_LabelScreenSettingVerificationSSID, 63);
+    lv_obj_set_y(ui_LabelScreenSettingVerificationSSID, 60);
+    // lv_obj_set_style_text_font(ui_LabelScreenSettingVerificationSSID, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_font_t* font = ui_get_freetype_font();
+    lv_obj_set_style_text_font(ui_LabelScreenSettingVerificationSSID, font, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_LabelScreenSettingVerificationSSID, LV_TEXT_ALIGN_LEFT, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_TextAreaScreenSettingVerificationPassword = lv_textarea_create(ui_ScreenSettingVerification);

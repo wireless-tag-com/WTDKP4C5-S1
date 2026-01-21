@@ -202,7 +202,8 @@ bool AppSettings::init(void)
     bsp_display_brightness_set(_nvs_param_map[NVS_KEY_DISPLAY_BRIGHTNESS]);
 
     xTaskCreate(euiRefresTask, "Home Refresh", HOME_REFRESH_TASK_STACK_SIZE, this, HOME_REFRESH_TASK_PRIORITY, NULL);
-    xTaskCreate(wifiScanTask, "WiFi Scan", WIFI_SCAN_TASK_STACK_SIZE, this, WIFI_SCAN_TASK_PRIORITY, NULL);
+    // xTaskCreate(wifiScanTask, "WiFi Scan", WIFI_SCAN_TASK_STACK_SIZE, this, WIFI_SCAN_TASK_PRIORITY, NULL);
+    xTaskCreate(wifiScanTask, "WiFi Scan", 1024 * 24, this, WIFI_SCAN_TASK_PRIORITY, NULL);
 
     return true;
 }
@@ -268,6 +269,8 @@ void AppSettings::extraUiInit(void)
 
         label_wifi_ssid[i] = lv_label_create(panel_wifi_btn[i]);
         lv_obj_set_align(label_wifi_ssid[i], LV_ALIGN_LEFT_MID);
+        lv_font_t* font = ui_get_freetype_font();
+        lv_obj_set_style_text_font(label_wifi_ssid[i], font, 0);
 
         img_img_wifi_lock[i] = lv_img_create(panel_wifi_btn[i]);
         lv_obj_align(img_img_wifi_lock[i], LV_ALIGN_RIGHT_MID, UI_WIFI_ICON_LOCK_RIGHT_OFFSET, 0);

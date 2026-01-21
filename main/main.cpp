@@ -24,8 +24,12 @@ extern "C" void app_main(void)
     }
     ESP_ERROR_CHECK(err);
     
+    lvgl_port_cfg_t lvgl_cfg = ESP_LVGL_PORT_INIT_CONFIG();
+    // FreeType的gray_convert_glyph函数在栈上分配约16KB缓冲区,需要增加任务栈大小
+    lvgl_cfg.task_stack = 32 * 1024;  // 增加到32KB以支持FreeType渲染
+
     bsp_display_cfg_t cfg = {
-        .lvgl_port_cfg = ESP_LVGL_PORT_INIT_CONFIG(),
+        .lvgl_port_cfg = lvgl_cfg,
         .buffer_size = BSP_LCD_DRAW_BUFF_SIZE,
         .double_buffer = BSP_LCD_DRAW_BUFF_DOUBLE,
         .flags = {

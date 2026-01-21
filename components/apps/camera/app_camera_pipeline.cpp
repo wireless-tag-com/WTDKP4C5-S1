@@ -93,21 +93,20 @@ esp_err_t camera_element_pipeline_new(camera_pipeline_cfg_t *cfg, pipeline_handl
     return ESP_OK;
 
 err:
-    for (int i = 0; i < stream->elem_num; i++) {
-        if (stream->element[i].internal) {
-            free(stream->element[i].buffer);
-        }
-    }
-
-    if (stream->ready_sem) {
-        vSemaphoreDelete(stream->ready_sem);
-    }
-    portEXIT_CRITICAL(&stream->stream_lock);
-
-    if (stream->element) {
-        free(stream->element);
-    }
     if (stream) {
+        for (int i = 0; i < stream->elem_num; i++) {
+            if (stream->element[i].internal) {
+                free(stream->element[i].buffer);
+            }
+        }
+
+        if (stream->ready_sem) {
+            vSemaphoreDelete(stream->ready_sem);
+        }
+
+        if (stream->element) {
+            free(stream->element);
+        }
         free(stream);
     }
     return ret;
@@ -127,7 +126,6 @@ esp_err_t camera_element_pipeline_delete(pipeline_handle_t pipeline)
     if (stream->ready_sem) {
         vSemaphoreDelete(stream->ready_sem);
     }
-    portEXIT_CRITICAL(&stream->stream_lock);
 
     free(stream->element);
     free(stream);

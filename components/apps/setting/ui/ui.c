@@ -213,10 +213,33 @@ if ( event_code == LV_EVENT_CLICKED) {
 }
 }
 
+static lv_ft_info_t freetype_data;
+static bool freetype_initialized = false;
+
+static void ui_Freetype_init(void) {
+    // 初始化 FreeType 字体
+    freetype_data.name = "./MiSans.ttf";
+    freetype_data.weight = 30;
+    freetype_data.style = FT_FONT_STYLE_NORMAL;
+    freetype_data.mem = font_data_start;
+    freetype_data.mem_size = font_data_end - font_data_start;
+    freetype_data.font = NULL;
+
+    if (!lv_ft_font_init(&freetype_data)) {
+        LV_LOG_ERROR("create failed.");
+        return;
+    }
+}
+
+lv_font_t* ui_get_freetype_font(void) {
+    return freetype_data.font;
+}
+
 ///////////////////// SCREENS ////////////////////
 
 void ui_setting_init( void )
 {
+ui_Freetype_init();
 ui_ScreenSettingMain_screen_init();
 ui_ScreenSettingWiFi_screen_init();
 ui_ScreenSettingBLE_screen_init();

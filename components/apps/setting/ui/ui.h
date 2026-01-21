@@ -10,7 +10,8 @@
 extern "C" {
 #endif
 
-    #include "lvgl.h"
+#include "lvgl.h"
+#include "lv_freetype.h"
 
 #include "esp_brookesia.h"
 // SCREEN: ui_ScreenSettingMain
@@ -135,6 +136,10 @@ void ui_event_KeyboardScreenSettingVerification(lv_event_t * e);
 extern lv_obj_t * ui_KeyboardScreenSettingVerification;
 extern lv_obj_t * ui_SpinnerScreenSettingVerification;
 void onKeyboardScreenSettingVerificationClickedEventCallback(lv_event_t * e);
+
+extern const uint8_t font_data_start[] asm("_binary_MiSans_ttf_start");
+extern const uint8_t font_data_end[]   asm("_binary_MiSans_ttf_end");
+lv_font_t* ui_get_freetype_font(void);
 
 LV_IMG_DECLARE( ui_img_wifi_png);   // assets/WiFi.png
 LV_IMG_DECLARE( ui_img_arrow_png);   // assets/arrow.png
