@@ -530,6 +530,12 @@ void AppSettings::scanWifiAndUpdateUi(void)
     esp_wifi_start();
     esp_wifi_scan_start(NULL, true);
     ESP_ERROR_CHECK(esp_wifi_scan_get_ap_num(&ap_count));
+
+    if (ap_count == 0) {
+        ESP_LOGI(TAG, "No APs found");
+        return;
+    }
+
     ESP_ERROR_CHECK(esp_wifi_scan_get_ap_records(&number, ap_info));
 #if ENABLE_DEBUG_LOG
     ESP_LOGI(TAG, "Total APs scanned = %u", ap_count);
