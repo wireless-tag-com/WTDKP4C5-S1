@@ -73,7 +73,7 @@ lv_obj_set_width( ui_ButtonScreenSettingVolumeReturn, 60);
 lv_obj_set_height( ui_ButtonScreenSettingVolumeReturn, 60);
 lv_obj_set_x( ui_ButtonScreenSettingVolumeReturn, -352 );
 lv_obj_set_y( ui_ButtonScreenSettingVolumeReturn, -596 );
-lv_obj_set_align( ui_ButtonScreenSettingVolumeReturn, LV_ALIGN_CENTER );
+lv_obj_align_to( ui_ButtonScreenSettingVolumeReturn, ui_ScreenSettingVolume, LV_ALIGN_TOP_RIGHT, -65, 8 );
 lv_obj_add_flag( ui_ButtonScreenSettingVolumeReturn, LV_OBJ_FLAG_SCROLL_ON_FOCUS );   /// Flags
 lv_obj_clear_flag( ui_ButtonScreenSettingVolumeReturn, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_color(ui_ButtonScreenSettingVolumeReturn, lv_color_hex(0xE5F3FF), LV_PART_MAIN | LV_STATE_DEFAULT );

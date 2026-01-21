@@ -73,7 +73,7 @@ lv_obj_set_width( ui_ButtonScreenSettingWiFiReturn, 60);
 lv_obj_set_height( ui_ButtonScreenSettingWiFiReturn, 60);
 lv_obj_set_x( ui_ButtonScreenSettingWiFiReturn, -352 );
 lv_obj_set_y( ui_ButtonScreenSettingWiFiReturn, -596 );
-lv_obj_set_align( ui_ButtonScreenSettingWiFiReturn, LV_ALIGN_CENTER );
+lv_obj_align_to( ui_ButtonScreenSettingWiFiReturn, ui_ScreenSettingWiFi, LV_ALIGN_TOP_RIGHT, -65, 8 );
 lv_obj_add_flag( ui_ButtonScreenSettingWiFiReturn, LV_OBJ_FLAG_SCROLL_ON_FOCUS );   /// Flags
 lv_obj_clear_flag( ui_ButtonScreenSettingWiFiReturn, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_color(ui_ButtonScreenSettingWiFiReturn, lv_color_hex(0xE5F3FF), LV_PART_MAIN | LV_STATE_DEFAULT );

@@ -33,12 +33,39 @@ void ui_ScreenSettingVerification_screen_init(void)
     ui_TextAreaScreenSettingVerificationPassword = lv_textarea_create(ui_ScreenSettingVerification);
     lv_obj_set_width(ui_TextAreaScreenSettingVerificationPassword, 715);
     lv_obj_set_height(ui_TextAreaScreenSettingVerificationPassword, 66);
-    lv_obj_set_x(ui_TextAreaScreenSettingVerificationPassword, -9);
+    lv_obj_set_x(ui_TextAreaScreenSettingVerificationPassword, -9 - 66);
     lv_obj_set_y(ui_TextAreaScreenSettingVerificationPassword, -95);
     lv_obj_set_align(ui_TextAreaScreenSettingVerificationPassword, LV_ALIGN_CENTER);
     lv_textarea_set_placeholder_text(ui_TextAreaScreenSettingVerificationPassword, "Password...");
     lv_obj_set_style_text_font(ui_TextAreaScreenSettingVerificationPassword, &lv_font_montserrat_30,
                                LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_textarea_set_password_mode(ui_TextAreaScreenSettingVerificationPassword, true);
+
+    ui_BtnTextAreaScreenSettingVerificationPassword = lv_btn_create(ui_ScreenSettingVerification);
+    lv_obj_set_width(ui_BtnTextAreaScreenSettingVerificationPassword, 132);
+    lv_obj_set_height(ui_BtnTextAreaScreenSettingVerificationPassword, 60);
+    lv_obj_set_x(ui_BtnTextAreaScreenSettingVerificationPassword, (715 - 9)/2 + 20);
+    lv_obj_set_y(ui_BtnTextAreaScreenSettingVerificationPassword, -92);
+    lv_obj_set_align(ui_BtnTextAreaScreenSettingVerificationPassword, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_BtnTextAreaScreenSettingVerificationPassword, LV_OBJ_FLAG_CLICKABLE);
+    lv_obj_add_event_cb(ui_BtnTextAreaScreenSettingVerificationPassword, ui_event_BtnTextAreaScreenSettingVerificationPassword, LV_EVENT_CLICKED, NULL);
+    lv_obj_set_style_bg_color(ui_BtnTextAreaScreenSettingVerificationPassword, lv_color_hex(0x87CEFA), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_BtnTextAreaScreenSettingVerificationPassword, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_BtnTextAreaScreenSettingVerificationPassword, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui_BtnTextAreaScreenSettingVerificationPassword, 0, LV_PART_MAIN| LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_BtnTextAreaScreenSettingVerificationPassword, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui_BtnTextAreaScreenSettingVerificationPassword, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_color(ui_BtnTextAreaScreenSettingVerificationPassword, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_opa(ui_BtnTextAreaScreenSettingVerificationPassword, 150, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui_BtnTextAreaScreenSettingVerificationPassword, lv_pct(10), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_width(ui_BtnTextAreaScreenSettingVerificationPassword, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_LabelTextAreaScreenSettingVerificationPassword = lv_label_create(ui_BtnTextAreaScreenSettingVerificationPassword);
+    lv_obj_set_width(ui_LabelTextAreaScreenSettingVerificationPassword, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_LabelTextAreaScreenSettingVerificationPassword, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_LabelTextAreaScreenSettingVerificationPassword, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_LabelTextAreaScreenSettingVerificationPassword, "Show");
+    lv_obj_set_style_text_font(ui_LabelTextAreaScreenSettingVerificationPassword, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_KeyboardScreenSettingVerification = lv_keyboard_create(ui_ScreenSettingVerification);
     lv_obj_set_width(ui_KeyboardScreenSettingVerification, 948);
@@ -61,4 +88,43 @@ void ui_ScreenSettingVerification_screen_init(void)
                                LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_opa(ui_SpinnerScreenSettingVerification, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_width(ui_SpinnerScreenSettingVerification, 5, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+
+    ui_ButtonScreenSettingVerificationReturn = lv_btn_create(ui_ScreenSettingVerification);
+    lv_obj_set_width(ui_ButtonScreenSettingVerificationReturn, 60);
+    lv_obj_set_height(ui_ButtonScreenSettingVerificationReturn, 60);
+    lv_obj_set_x(ui_ButtonScreenSettingVerificationReturn, -352);
+    lv_obj_set_y(ui_ButtonScreenSettingVerificationReturn, -596);
+    lv_obj_align_to(ui_ButtonScreenSettingVerificationReturn, ui_ScreenSettingVerification, LV_ALIGN_TOP_RIGHT, -65, 8);
+    lv_obj_add_flag(ui_ButtonScreenSettingVerificationReturn, LV_OBJ_FLAG_SCROLL_ON_FOCUS);   /// Flags
+    lv_obj_clear_flag(ui_ButtonScreenSettingVerificationReturn, LV_OBJ_FLAG_SCROLLABLE);    /// Flags
+    lv_obj_set_style_bg_color(ui_ButtonScreenSettingVerificationReturn, lv_color_hex(0xE5F3FF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_ButtonScreenSettingVerificationReturn, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
+
+    ui_ImageScreenSettingVerificationReturn = lv_img_create(ui_ButtonScreenSettingVerificationReturn);
+    lv_img_set_src(ui_ImageScreenSettingVerificationReturn, &ui_img_return_png);
+    lv_obj_set_width(ui_ImageScreenSettingVerificationReturn, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_ImageScreenSettingVerificationReturn, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_align(ui_ImageScreenSettingVerificationReturn, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_ImageScreenSettingVerificationReturn, LV_OBJ_FLAG_ADV_HITTEST);   /// Flags
+    lv_obj_clear_flag(ui_ImageScreenSettingVerificationReturn, LV_OBJ_FLAG_SCROLLABLE);    /// Flags
+    lv_obj_set_style_img_recolor(ui_ImageScreenSettingVerificationReturn, lv_color_hex(0x000000), LV_PART_MAIN| LV_STATE_DEFAULT);
+    lv_obj_set_style_img_recolor_opa(ui_ImageScreenSettingVerificationReturn, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
+
+    lv_obj_add_event_cb(ui_ButtonScreenSettingVerificationReturn, ui_event_ButtonScreenSettingVerificationReturn, LV_EVENT_CLICKED, NULL);
+}
+
+void ui_event_BtnTextAreaScreenSettingVerificationPassword(lv_event_t * e) {
+    bool password_mode = lv_textarea_get_password_mode(ui_TextAreaScreenSettingVerificationPassword);
+    password_mode = !password_mode;
+    lv_textarea_set_password_mode(ui_TextAreaScreenSettingVerificationPassword, password_mode);
+    if (password_mode) {
+        lv_label_set_text(ui_LabelTextAreaScreenSettingVerificationPassword, "Show");
+    } else {
+        lv_label_set_text(ui_LabelTextAreaScreenSettingVerificationPassword, "Hide");
+    }
+}
+
+void ui_event_ButtonScreenSettingVerificationReturn(lv_event_t * e) {
+    lv_textarea_set_text(ui_TextAreaScreenSettingVerificationPassword, "");
+    _ui_screen_change( &ui_ScreenSettingWiFi, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_ScreenSettingWiFi_screen_init);
 }

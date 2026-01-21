@@ -287,7 +287,7 @@ void AppSettings::extraUiInit(void)
             lv_obj_add_flag(ui_SpinnerScreenSettingWiFi, LV_OBJ_FLAG_HIDDEN);
         }
     }
-    lv_obj_add_flag(ui_ButtonScreenSettingWiFiReturn, LV_OBJ_FLAG_HIDDEN);
+    // lv_obj_add_flag(ui_ButtonScreenSettingWiFiReturn, LV_OBJ_FLAG_HIDDEN);
     // Connect
     lv_obj_add_flag(ui_SpinnerScreenSettingVerification, LV_OBJ_FLAG_HIDDEN);
     _panel_wifi_connect = lv_obj_create(ui_ScreenSettingVerification);
@@ -301,6 +301,7 @@ void AppSettings::extraUiInit(void)
     lv_obj_set_size(_spinner_wifi_connect, lv_pct(20), lv_pct(20));
     lv_obj_center(_spinner_wifi_connect);
     processWifiConnect(WIFI_CONNECT_HIDE);
+    
     // Keyboard
     lv_textarea_set_password_mode(ui_TextAreaScreenSettingVerificationPassword, true);
     lv_obj_add_event_cb(ui_KeyboardScreenSettingVerification, onKeyboardScreenSettingVerificationClickedEventCallback,
@@ -323,7 +324,7 @@ void AppSettings::extraUiInit(void)
     lv_slider_set_range(ui_SliderPanelScreenSettingLightSwitch1, SCREEN_BRIGHTNESS_MIN, SCREEN_BRIGHTNESS_MAX);
     lv_obj_add_event_cb(ui_SliderPanelScreenSettingLightSwitch1, onSliderPanelLightSwitchValueChangeEventCallback,
                         LV_EVENT_VALUE_CHANGED, this);
-    lv_obj_add_flag(ui_ButtonScreenSettingLightReturn, LV_OBJ_FLAG_HIDDEN);
+    // lv_obj_add_flag(ui_ButtonScreenSettingLightReturn, LV_OBJ_FLAG_HIDDEN);
     // Record the screen index and install the screen loaded event callback
     _screen_list[UI_BRIGHTNESS_SETTING_INDEX] = ui_ScreenSettingLight;
     lv_obj_add_event_cb(ui_ScreenSettingLight, onScreenLoadEventCallback, LV_EVENT_SCREEN_LOADED, this);
@@ -332,14 +333,14 @@ void AppSettings::extraUiInit(void)
     lv_slider_set_range(ui_SliderPanelScreenSettingVolumeSwitch, SPEAKER_VOLUME_MIN, SPEAKER_VOLUME_MAX);
     lv_obj_add_event_cb(ui_SliderPanelScreenSettingVolumeSwitch, onSliderPanelVolumeSwitchValueChangeEventCallback,
                         LV_EVENT_VALUE_CHANGED, this);
-    lv_obj_add_flag(ui_ButtonScreenSettingVolumeReturn, LV_OBJ_FLAG_HIDDEN);
+    // lv_obj_add_flag(ui_ButtonScreenSettingVolumeReturn, LV_OBJ_FLAG_HIDDEN);
     // Record the screen index and install the screen loaded event callback
     _screen_list[UI_VOLUME_SETTING_INDEX] = ui_ScreenSettingVolume;
     lv_obj_add_event_cb(ui_ScreenSettingVolume, onScreenLoadEventCallback, LV_EVENT_SCREEN_LOADED, this);
 
     /* About */
     lv_label_set_text(ui_LabelPanelPanelScreenSettingAbout4, "ESP_Brookesia");
-    lv_obj_add_flag(ui_ButtonScreenSettingAboutReturn, LV_OBJ_FLAG_HIDDEN);
+    // lv_obj_add_flag(ui_ButtonScreenSettingAboutReturn, LV_OBJ_FLAG_HIDDEN);
     // Record the screen index and install the screen loaded event callback
     _screen_list[UI_ABOUT_SETTING_INDEX] = ui_ScreenSettingAbout;
     lv_obj_add_event_cb(ui_ScreenSettingAbout, onScreenLoadEventCallback, LV_EVENT_SCREEN_LOADED, this);

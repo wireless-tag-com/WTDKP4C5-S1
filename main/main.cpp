@@ -55,14 +55,6 @@ extern "C" void app_main(void)
 
     assert(phone->begin() && "Failed to begin phone");
 
-    Calculator *calculator = new Calculator();
-    assert(calculator != nullptr && "Failed to create calculator");
-    assert((phone->installApp(calculator) >= 0) && "Failed to begin calculator");
-
-    AppSettings *app_settings = new AppSettings();
-    assert(app_settings != nullptr && "Failed to create app_settings");
-    assert((phone->installApp(app_settings) >= 0) && "Failed to begin app_settings");
-
     Game2048 *game_2048 = new Game2048();
     assert(game_2048 != nullptr && "Failed to create game_2048");
     assert((phone->installApp(game_2048) >= 0) && "Failed to begin game_2048");
@@ -70,6 +62,14 @@ extern "C" void app_main(void)
     Camera *camera = new Camera(1280, 960);
     assert(camera != nullptr && "Failed to create camera");
     assert((phone->installApp(camera) >= 0) && "Failed to begin camera");
+
+    Calculator *calculator = new Calculator();
+    assert(calculator != nullptr && "Failed to create calculator");
+    assert((phone->installApp(calculator) >= 0) && "Failed to begin calculator");
+
+    AppSettings *app_settings = new AppSettings();
+    assert(app_settings != nullptr && "Failed to create app_settings");
+    assert((phone->installApp(app_settings) >= 0) && "Failed to begin app_settings");
 
     /* Release the lock */
     bsp_display_unlock();
