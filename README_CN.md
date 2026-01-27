@@ -86,6 +86,10 @@ idf.py monitor
 ```bash
 (Top) → Component config → Wi-Fi Remote → choose slave target
 ```
+且需要在menuconfig中将LV_USE_FREETYPE宏打开
+```bash
+(Top) → Component config → LVGL configuration → 3rd Party Libraries
+```
 
 >[!NOTE] 需要注意引脚配置
 

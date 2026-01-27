@@ -10,6 +10,12 @@ target_compile_options(
         -DLV_USE_DEMO_MUSIC
 )
 
+idf_component_get_property(FREETYPE_DIR espressif__freetype COMPONENT_DIR)
+target_include_directories(${LVGL_LIB} PRIVATE "${FREETYPE_DIR}/freetype/include")
+
+idf_component_get_property(FREETYPE_LIB espressif__freetype COMPONENT_LIB)
+target_link_libraries(${LVGL_LIB} PUBLIC ${FREETYPE_LIB})
+
 if(CONFIG_ESP_BROOKESIA_MEMORY_USE_CUSTOM)
     idf_build_get_property(build_components BUILD_COMPONENTS)
     foreach(COMPONENT ${build_components})

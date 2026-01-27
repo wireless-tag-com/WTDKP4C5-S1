@@ -85,6 +85,10 @@ Open menuconfig and enter the corresponding configuration options, configure ESP
 ```bash
 (Top) → Component config → Wi-Fi Remote → choose slave target
 ```
+And you need to enable the LV_USE_FREETYPE macro in menuconfig
+```bash
+(Top) → Component config → LVGL configuration → 3rd Party Libraries
+```
 
 >[!NOTE] Note the pin configuration
 
