@@ -92,6 +92,7 @@ esp_err_t bsp_i2c_init(void)
         .sda_io_num = BSP_I2C_SDA,
         .scl_io_num = BSP_I2C_SCL,
         .i2c_port = BSP_I2C_NUM,
+        .flags.enable_internal_pullup = true,
     };
     BSP_ERROR_CHECK_RETURN_ERR(i2c_new_master_bus(&i2c_bus_conf, &i2c_handle));
 
@@ -539,7 +540,6 @@ esp_err_t bsp_display_new_with_handles(const bsp_display_config_t *config, bsp_l
 {
     esp_err_t ret = ESP_OK;
 
-    ESP_RETURN_ON_ERROR(bsp_display_brightness_init(), TAG, "Brightness init failed");
     ESP_RETURN_ON_ERROR(bsp_enable_dsi_phy_power(), TAG, "DSI PHY power failed");
 
     /* create MIPI DSI bus first, it will initialize the DSI PHY as well */

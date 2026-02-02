@@ -1107,6 +1107,11 @@ void Game2048::motion_event_cb(lv_event_t *e)
 
         printf("score: %d\n", score);
 
+        esp_err_t err = nvs_set_i32(app->nvs_handle, NVS_BEST_SCORE, score);
+        if (err != ESP_OK) {
+            ESP_LOGE(TAG, "Error (%s) setting %s", esp_err_to_name(err), NVS_BEST_SCORE);
+        }
+
         if (score >= 0) {
             generate_cell_flag = true;
             app->showEmojiScore(score);
